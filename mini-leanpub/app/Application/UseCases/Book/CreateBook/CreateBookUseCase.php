@@ -3,6 +3,8 @@
 namespace MiniLeanpub\Application\UseCases\Book\CreateBook;
 
 use MiniLeanpub\Domain\Book\Entity\Book;
+use MiniLeanpub\Application\UseCases\Book\CreateBook\DTO\BookCreateInputDTO;
+use MiniLeanpub\Application\UseCases\Book\CreateBook\DTO\BookCreateOutputDTO;
 
 class CreateBookUseCase
 {
