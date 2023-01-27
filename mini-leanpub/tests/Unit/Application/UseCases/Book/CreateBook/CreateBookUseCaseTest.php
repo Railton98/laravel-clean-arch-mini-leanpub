@@ -2,9 +2,8 @@
 
 namespace Tests\Minileanpub\Unit\Application\UseCases\Book\CreateBook;
 
-use PHPUnit\Framework\TestCase;
-use MiniLeanpub\Domain\Book\Entity\Book;
 use stdClass;
+use PHPUnit\Framework\TestCase;
 
 class CreateBookUseCaseTest extends TestCase
 {
