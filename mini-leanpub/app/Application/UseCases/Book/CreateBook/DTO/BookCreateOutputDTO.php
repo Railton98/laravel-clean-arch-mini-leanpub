@@ -7,12 +7,12 @@ use MiniLeanpub\Application\UseCases\Shared\InteractorDTO;
 class BookCreateOutputDTO extends InteractorDTO
 {
     public function __construct(
-        public ?string $id,
-        public ?string $title,
-        public ?string $description,
-        public ?string $price,
-        public ?string $bookPath,
-        public ?string $mimeType,
+        public ?string $id = null,
+        public ?string $title = null,
+        public ?string $description = null,
+        public ?string $price = null,
+        public ?string $bookPath = null,
+        public ?string $mimeType = null,
     ) {
     }
 }

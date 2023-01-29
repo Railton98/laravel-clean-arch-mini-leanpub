@@ -3,12 +3,18 @@
 namespace Tests\Minileanpub\Unit\Application\UseCases\Book\CreateBook;
 
 use stdClass;
+use App\Models\Book;
 use PHPUnit\Framework\TestCase;
+use MiniLeanpub\Domain\Book\Repository\BookRepositoryInterface;
+use MiniLeanpub\Infrastructure\Repository\Book\BookEloquentRepository;
+use MiniLeanpub\Application\UseCases\Book\CreateBook\CreateBookUseCase;
+use MiniLeanpub\Application\UseCases\Book\CreateBook\DTO\{BookCreateInputDTO, BookCreateOutputDTO};
 
 class CreateBookUseCaseTest extends TestCase
 {
     public function testShouldCreateANewBookViaUseCase()
     {
+        /** @var BookRepositoryInterface $repository */
         $repository = $this->getRepositoryMock();
 
         $input = new BookCreateInputDTO(
@@ -28,7 +34,7 @@ class CreateBookUseCaseTest extends TestCase
         $data = $result->getData();
 
         $this->assertEquals('795be8dd-1908-4295-a535-e4dfd5247886', $data['id']);
-        $this->assertEquals('My Awesome Book', $data['titleI']);
+        $this->assertEquals('My Awesome Book', $data['title']);
     }
 
     private function getRepositoryMock()
