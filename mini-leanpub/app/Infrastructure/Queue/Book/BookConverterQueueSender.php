@@ -2,6 +2,7 @@
 
 namespace MiniLeanpub\Infrastructure\Queue\Book;
 
+use App\Jobs\Book\ConvertBookJob;
 use MiniLeanpub\Domain\Shared\Queue\QueueInterface;
 
 class BookConverterQueueSender implements QueueInterface
