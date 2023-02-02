@@ -7,13 +7,13 @@ use MiniLeanpub\Domain\Shared\Queue\QueueInterface;
 
 class BookConverterQueueSender implements QueueInterface
 {
-    public function __construct(private string $bookPath)
+    public function __construct(private string $bookCode)
     {
     }
 
     public function sendToQueue(): bool
     {
-        ConvertBookJob::dispatch($this->bookPath);
+        ConvertBookJob::dispatch($this->bookCode);
 
         return true;
     }
