@@ -7,9 +7,13 @@ use App\Models\Book;
 use PHPUnit\Framework\TestCase;
 use MiniLeanpub\Domain\Shared\Queue\QueueInterface;
 use MiniLeanpub\Domain\Book\Repository\BookRepositoryInterface;
+use MiniLeanpub\Application\UseCases\Book\ConvertBookToPDF\DTO\{
+    ConvertBookToPDFInputDTO,
+    ConvertBookToPDFOutputDTO
+};
+use MiniLeanpub\Infrastructure\Queue\Book\BookConverterQueueSender;
 use MiniLeanpub\Infrastructure\Repository\Book\BookEloquentRepository;
 use MiniLeanpub\Application\UseCases\Book\ConvertBookToPDF\ConvertBookToPDFUseCase;
-use MiniLeanpub\Application\UseCases\Book\ConvertBookToPDF\DTO\ConvertBookToPDFInputDTO;
 
 class ConvertBookToPDFUseCaseTest extends TestCase
 {
@@ -57,6 +61,7 @@ class ConvertBookToPDFUseCaseTest extends TestCase
     {
         $mock = $this->getMockBuilder(BookConverterQueueSender::class)
             ->onlyMethods(['sendToQueue'])
+            ->setConstructorArgs(['72479eaa-62a8-4ddb-8d6e-4c35c6c7f700'])
             ->getMock();
 
         $mock->expects($this->once())
