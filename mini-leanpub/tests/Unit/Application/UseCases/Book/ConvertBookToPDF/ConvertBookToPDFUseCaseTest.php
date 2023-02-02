@@ -2,14 +2,23 @@
 
 namespace Tests\Minileanpub\Unit\Application\UseCases\Book\ConvertBookToPdf;
 
+use stdClass;
+use App\Models\Book;
 use PHPUnit\Framework\TestCase;
+use MiniLeanpub\Domain\Shared\Queue\QueueInterface;
+use MiniLeanpub\Domain\Book\Repository\BookRepositoryInterface;
+use MiniLeanpub\Infrastructure\Repository\Book\BookEloquentRepository;
+use MiniLeanpub\Application\UseCases\Book\ConvertBookToPDF\ConvertBookToPDFUseCase;
+use MiniLeanpub\Application\UseCases\Book\ConvertBookToPDF\DTO\ConvertBookToPDFInputDTO;
 
 class ConvertBookToPDFUseCaseTest extends TestCase
 {
     public function testShouldSendABookToConvertToPdfViaUseCase()
     {
         $input = new ConvertBookToPDFInputDTO('72479eaa-62a8-4ddb-8d6e-4c35c6c7f700');
+        /** @var BookRepositoryInterface $repository */
         $repository = $this->getRepositoryMock();
+        /** @var QueueInterface $queueSender */
         $queueSender  = $this->getQueueSenderMock();
 
         $useCase = new ConvertBookToPDFUseCase($input, $repository, $queueSender);
@@ -22,7 +31,7 @@ class ConvertBookToPDFUseCaseTest extends TestCase
     {
         $stubModel = $this->createMock(Book::class);
 
-        $return = new \stdClass();
+        $return = new stdClass();
         $return->id = 1;
         $return->book_code = '72479eaa-62a8-4ddb-8d6e-4c35c6c7f700';
         $return->title = 'My awesome book title!';
