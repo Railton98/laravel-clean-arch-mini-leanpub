@@ -5,7 +5,7 @@ namespace MiniLeanpub\Domain\Book\Entity;
 class Book
 {
     public function __construct(
-        private ?string $id,
+        private ?string $bookCode,
         private ?string $title,
         private ?string $description,
         private ?float $price,
@@ -16,7 +16,7 @@ class Book
 
     public function validate()
     {
-        if (!$this->id) throw new \Exception('Invalid Entity: ID');
+        if (!$this->bookCode) throw new \Exception('Invalid Entity: ID');
 
         if (!$this->title || !$this->description) throw new \Exception('Invalid Entity: Title or Description');
 

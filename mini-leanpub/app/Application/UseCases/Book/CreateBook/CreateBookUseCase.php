@@ -22,7 +22,7 @@ class CreateBookUseCase
         $data = $this->input->getData();
 
         $entity = new Book(
-            $data['id'],
+            $data['bookCode'],
             $data['title'],
             $data['description'],
             $data['price'],
@@ -33,6 +33,6 @@ class CreateBookUseCase
 
         $result = $this->repository->create($data);
 
-        return new BookCreateOutputDTO($result->id, $result->title);
+        return new BookCreateOutputDTO($result->bookCode, $result->title);
     }
 }

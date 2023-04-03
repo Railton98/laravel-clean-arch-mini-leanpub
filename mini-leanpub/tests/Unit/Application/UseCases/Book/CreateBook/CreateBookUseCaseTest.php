@@ -33,14 +33,14 @@ class CreateBookUseCaseTest extends TestCase
 
         $data = $result->getData();
 
-        $this->assertEquals('795be8dd-1908-4295-a535-e4dfd5247886', $data['id']);
+        $this->assertEquals('795be8dd-1908-4295-a535-e4dfd5247886', $data['bookCode']);
         $this->assertEquals('My Awesome Book', $data['title']);
     }
 
     private function getRepositoryMock()
     {
         $return = new stdClass();
-        $return->id = '795be8dd-1908-4295-a535-e4dfd5247886';
+        $return->bookCode = '795be8dd-1908-4295-a535-e4dfd5247886';
         $return->title = 'My Awesome Book';
         $return->description = 'My Awesome Book Desc';
         $return->price = 25.9;
